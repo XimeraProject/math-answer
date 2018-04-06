@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AnswerBlank from './answerblank';
+import Answer from './answer';
 
 // import registerServiceWorker from './registerServiceWorker';
 
@@ -11,8 +11,6 @@ import AnswerBlank from './answerblank';
 ReactDOM.render(
   <div>
   <p>Type in \(x^2\)</p>
-  <AnswerBlank  answer="x^2" >
-  </AnswerBlank>
-  </div>,
+  <Answer answer="x^2"/>  </div>,
    document.getElementById('Question1')
  );
