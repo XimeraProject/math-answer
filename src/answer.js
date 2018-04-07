@@ -22,15 +22,19 @@ class Answer extends Component {
     event.preventDefault();
 
     this.setState({submitted: false});
-    
+
     if(this.props.changeCallBack !== undefined){
       this.props.changeCallBack(this.props.questionNumber,event);
     }else{
       this.setState({value: event.target.value});
     }
 
-    
-    this.setState({enteredAnswer: "\\("+event.target.value+"\\)" });
+    try {
+      let answerExpression = window.MathExpression.fromText(event.target.value);
+      this.setState({enteredAnswer: "\\("+answerExpression.toLatex()+"\\)" });
+    } catch(e) {
+      this.setState({enteredAnswer: e});
+    }
 
     // if(event.key === 'Enter'){
     //   alert("Enter!");
@@ -54,11 +58,16 @@ class Answer extends Component {
   }
 
   validate() {
-    let response = window.MathExpression.fromText(this.state.value);
-    let response_correct = this.state.answer.equals(response);
-    
-    this.setState({correct: response_correct ? 1: 0});
-    
+    try {
+      let response = window.MathExpression.fromText(this.state.value);
+      let response_correct = this.state.answer.equals(response);
+      this.setState({correct: response_correct ? 1: 0});
+
+    } catch(e) {
+      this.setState({correct: 0});
+    }
+
+
   }
 
   correctString() {
