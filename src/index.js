@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Answer from './answer';
+import Math from './math';
 
 // import registerServiceWorker from './registerServiceWorker';
 
@@ -11,6 +12,10 @@ import Answer from './answer';
 ReactDOM.render(
   <div>
   <p>Type in \(x^2\)</p>
-  <Answer answer="x^2"/>  </div>,
+  <Answer answer="x^2"/>
+
+  <br />
+  <Math input="x+" />
+  </div>,
    document.getElementById('Question1')
  );
