@@ -15,7 +15,7 @@ ReactDOM.render(
   <Answer answer="x^2"/>
 
   <br />
-  <Math input="x+" />
+  <Math input="x+3" />
   </div>,
    document.getElementById('Question1')
  );

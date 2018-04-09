@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import MathExpression from "./math-expressions.js";
+import me from 'math-expressions';
 
 class Answer extends Component {
   constructor(props){
@@ -8,7 +8,7 @@ class Answer extends Component {
       value: '',
       correct: 0,
       enteredAnswer: '',
-      answer: window.MathExpression.fromText(this.props.answer),
+      answer: me.fromText(this.props.answer),
       submitted: false,
     };
 
@@ -30,10 +30,10 @@ class Answer extends Component {
     }
 
     try {
-      let answerExpression = window.MathExpression.fromText(event.target.value);
+      let answerExpression = me.fromText(event.target.value);
       this.setState({enteredAnswer: "\\("+answerExpression.toLatex()+"\\)" });
     } catch(e) {
-      this.setState({enteredAnswer: e});
+      this.setState({enteredAnswer: e.message});
     }
 
     // if(event.key === 'Enter'){
@@ -59,7 +59,7 @@ class Answer extends Component {
 
   validate() {
     try {
-      let response = window.MathExpression.fromText(this.state.value);
+      let response = me.fromText(this.state.value);
       let response_correct = this.state.answer.equals(response);
       this.setState({correct: response_correct ? 1: 0});
 

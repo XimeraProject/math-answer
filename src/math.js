@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import me from 'math-expressions';
+
 
 class Math extends Component {
   constructor(props) {
@@ -6,7 +8,7 @@ class Math extends Component {
 
     let expression = null;
     try {
-      expression = window.MathExpression.fromText(this.props.input);
+      expression = me.fromText(this.props.input);
     } catch(e) {
 
     }
